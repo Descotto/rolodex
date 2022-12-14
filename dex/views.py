@@ -9,8 +9,19 @@ from .models import User, Company
 
 def index(request):
     companies = list(Company.objects.all())
-    return render(request, "dex/index.html", { 'companies': companies })
+    return render(request, "companies/index.html", { 'companies': companies })
     
 
-   
+def about(request):
+    return render(request, "dex/about.html")
 
+
+def contact(request):
+    return render(request, "companies/contact.html")
+
+
+def team(request):
+    return render(request, "companies/team.html")
+
+def department(request):
+    return render(request, "companies/department.html")
