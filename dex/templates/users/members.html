@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for member in members %}
+<div class="card text-center">
+<div class="card-body">
+<h3 class="card-title"><a href="{% url 'profile' member.id %}">{{ member.name }} {{ member.last_name }}</a></h3>
+<p class="card-text"> <a href="/companies">{{ member.department }} </a></p>
+<p class="card-text"> <a href="/">{{ member.email }}</a> </p>
+</div>
+</div>
+<hr>
+{% endfor %}
+{% endblock %}
