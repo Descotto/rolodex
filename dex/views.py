@@ -74,6 +74,27 @@ def profile(request, member_id):
     return render(request, 'users/profile.html', {'member': member})
 
 
+def login(request):
+     # if post, then authenticate (user submitted username and password)
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            u = form.cleaned_data['username']
+            p = form.cleaned_data['password']
+            user = authenticate(username = u, password = p)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect('/user/'+u)
+                else:
+                    print('The account has been disabled.')
+            else:
+                print('The username and/or password is incorrect.')
+    else: # it was a get request so send the emtpy login form
+        form = AuthenticationForm()
+        return render(request, 'login.html', {'form': form})
+
+
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/cats')
