@@ -1,11 +1,12 @@
 from django.shortcuts import render
-
+from django.contrib import messages
 # Create your views here.
 from django.http import HttpResponse
 from django.template import loader
 from .models import Member, Company
+from .forms import MemberForm, UserForm
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser, User
 # Add LoginForm to this line...
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 # ...and add the following line...
@@ -38,7 +39,15 @@ class MemberCreate(CreateView):
     self.object.save()
     return HttpResponseRedirect('/members')
 
+class MemberUpdate(UpdateView):
+  model = Member
+  fields = ['company','first_name','last_name','email','phone','department']
 
+  def form_valid(self, form):
+    self.object = form.save(commit=False)
+    self.object.save()
+    print(self.object.id)
+    return HttpResponseRedirect('/profile/' + str(self.object.id))
 
 
 def index(request):
@@ -52,9 +61,6 @@ def members_views(request):
 def about(request):
     return render(request, "dex/about.html")
 
-
-def singup(request):
-    return render(request, "dex/singup.html")
 
 
 def contact(request):
@@ -74,7 +80,7 @@ def profile(request, member_id):
     return render(request, 'users/profile.html', {'member': member})
 
 
-def login(request):
+def login_view(request):
      # if post, then authenticate (user submitted username and password)
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
@@ -97,7 +103,7 @@ def login(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('/cats')
+    return HttpResponseRedirect('/')
 
 
 def signup(request):
@@ -106,7 +112,8 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return HttpResponseRedirect('/')
+            print('User created', user)
+            return HttpResponseRedirect('/member/' + str(user.id) + '/update/')
     else:
         form = UserCreationForm()
         return render(request, 'signup.html', {'form': form})

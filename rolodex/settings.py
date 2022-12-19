@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'rolodex.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'rolodexdb',
+        'NAME': 'rolodex',
     }
 }
 
