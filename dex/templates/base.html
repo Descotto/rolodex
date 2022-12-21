@@ -13,7 +13,7 @@
     
     <h1>Rolodex</h1>
     {% if user.is_authenticated %}
-    <li class="breadcrumb-item active" aria-current="page"><a href="/profile/{{user.member.id}}">{{user}}'s Profile</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="/profile/"" + str()>{{user}}'s Profile</a></li>
     <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'logout' %}">Logout</a></li>
 {% else %}
     <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'login' %}">Login</a></li>
@@ -22,8 +22,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page"><a href="/contact">Company details</a></li>
-          <li class="breadcrumb-item active" aria-current="page"><a href="/departments">View Departments</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a href="/companies">Companies</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a href="/company/create">Create your Company</a></li>
         </ol>
     </nav>
 

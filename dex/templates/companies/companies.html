@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container py-5">
+    <header class="text-center text-black">
+        <h1 class="display-4">Companies</h1>
+    </header>
+    {% for c in comps %}
+    <div class="row py-5">
+        <div class="col-lg-7 mx-auto">
+
+            <div class="card shadow mb-4">
+                <div class="card-body p-5">
+                    <h4 class="mb-4"><a href="/companies/{{c.id}}">{{c.name}}</a></h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">{{c.description}}</li>
+                        <li class="mb-2">City: {{c.city}}</li>
+                        <li class="mb-2">{{c.address}}</li>
+                        <li class="mb-2">email: {{c.contact1}}</li>
+                        <li class="mb-2">phone: {{c.contact2}}</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+{% endblock %}

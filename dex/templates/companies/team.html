@@ -7,7 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>This is the teams page</h1>
-    <p>A Company's employees show here</p>
+
+    <h1>Our team</h1>
+    {% for t in team:%}
+    <h3>{{t.name}}</h3>
 </body>
 </html>

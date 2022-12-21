@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container py-5">
+    <header class="text-center text-black">
+        <h1 class="display-4">{{comp.name}}</h1>
+    </header>
+    <div class="row py-5">
+        <div class="col-lg-7 mx-auto">
+
+            <div class="card shadow mb-4">
+                <div class="card-body p-5">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">{{comp.description}}</li>
+                        <li class="mb-2">City: {{comp.city}}</li>
+                        <li class="mb-2">{{comp.address}}</li>
+                        <li class="mb-2">email: {{comp.contact1}}</li>
+                        <li class="mb-2">phone: {{comp.contact2}}</li>
+                    </ul>
+                    <h4><a href="/team/{{comp.id}}">Team</a></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

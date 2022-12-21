@@ -61,14 +61,23 @@ def members_views(request):
 def about(request):
     return render(request, "dex/about.html")
 
+def company_views(request):
+    comps = Company.objects.all()
+    print(comps, 'comps print')
+    return render(request, "companies/companies.html", {"comps": comps})
 
+def company_details(request, company_id):
+    comp = Company.objects.get(id=company_id)
+    return render(request, "companies/show.html", {"comp": comp})
 
 def contact(request):
     return render(request, "companies/contact.html")
 
 
-def team(request):
-    return render(request, "companies/team.html")
+def team(request, company_id):
+    team = Member.objects.filter(company_id=company_id)
+    print(team, 'TEAM PRINT ============>>>>>>')
+    return render(request, "companies/team.html", {"team": team})
 
 def department(request):
     return render(request, "companies/department.html")
