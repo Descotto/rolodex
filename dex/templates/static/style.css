@@ -1,10 +1,16 @@
+
 body{
     background:rgb(55, 54, 54);
+}
+.logo{
+    background-image: url(rolo.jpg);
+    background-color: rgba(62, 58, 87, 0.279);
 }
 .index{
     background-image: url("./rolo.jpg");
 }
 .card{
+    background-color: rgba(62, 58, 87, 0.279);
     border:none;
 
     position:relative;

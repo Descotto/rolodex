@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
     
     <h1>Rolodex</h1>
     {% if user.is_authenticated %}
-    <li class="breadcrumb-item active" aria-current="page"><a href="/profile/"" + str()>{{user}}'s Profile</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="/profile/{{user.member.id}}" + str()>{{user}}</a></li>
     <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'logout' %}">Logout</a></li>
 {% else %}
     <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'login' %}">Login</a></li>

@@ -75,8 +75,8 @@ def contact(request):
 
 
 def team(request, company_id):
-    team = Member.objects.filter(company_id=company_id)
-    print(team, 'TEAM PRINT ============>>>>>>')
+    print('COMPANY ID PRINT ========>>>', company_id)
+    team = Member.objects.all()
     return render(request, "companies/team.html", {"team": team})
 
 def department(request):
